@@ -1,0 +1,24 @@
+{
+  "name": "business-days",
+  "version": "1.0.0",
+  "description": "Application to retrieve Business Days within the year",
+  "main": "app.js",
+  "module": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leroytang93/business-days.git"
+  },
+  "author": "Leroy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leroytang93/business-days/issues"
+  },
+  "homepage": "https://github.com/leroytang93/business-days#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "^3.0.0"
+  }
+}
