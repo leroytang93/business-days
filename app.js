@@ -1,25 +1,39 @@
 const express = require('express');
-const fetch = require('node-fetch');
+const axios = require('axios');
+const config = require("config");
 const app = express();
-const port = 8080;
+const port = config.server.port;
 
 const logic = require('./logic');
 
 app.get('/api/businessdays', (request, response) => {
-    var days = logic.checkNumberofDays(2019);
-    res.send(`${days}`);
+    var years= request.params.year;
+    console.log(request.params.year);
+    var days = logic.checkNumberofDays(years);
+    if (typeof days !== 'undefined')
+    {
+        response.send(`Undefined number of days, please check input.`);
+    }
+    else
+    {
+        response.send(`${days}`);
+    }
 })
 
-app.get('/api/sgpubholidays', async (request, response) => {
-    const resource_id = '04a78f5b-2d12-4695-a6cd-d2b072bc93fe';
-    const publicHol_api_url = `https://data.gov.sg/api/action/datastore_search?resource_id=${resource_id}`;
-    
-    const fetch_response = await fetch(publicHol_api_url);
-    const json = await fetch_response.json();
-    console.log(json);
+app.get('/api/sgpublicholidays', (resquest, response) => {
+    axios.get(`${config.development.sgPublicHols_url}${config.development.sgPublicHols_resource_id}`)
+      
+    // Print data
+    .then(response => {
+       const { Date, Day, Holiday } = response.data
+       console.log(`Post ${Date}: ${Day}: ${Holiday}\n`)
+    })
+
+    // Print error message if occur
+    .catch(error => console.log(
+          `Error to fetch data\n ${error}`))
 })
 
 app.listen(port, () => {
     console.log(`Listening at port ${port}...`)
-  })
-
+    })

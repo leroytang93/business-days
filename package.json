@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/leroytang93/business-days#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "node-fetch": "^3.0.0"
+    "axios": "^0.24.0",
+    "config": "^3.3.6",
+    "express": "^4.17.1"
   }
 }
