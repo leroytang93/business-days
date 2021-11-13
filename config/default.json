@@ -1,0 +1,12 @@
+{
+    "server":
+    {
+        "host": "localhost",
+        "port": "8080"
+    },
+    "development":
+    {
+        "sgPublicHols_url": "https://data.gov.sg/api/action/datastore_search",
+        "sgPublicHols_resource_id": "6228c3c5-03bd-4747-bb10-85140f87168b"
+    }
+}
